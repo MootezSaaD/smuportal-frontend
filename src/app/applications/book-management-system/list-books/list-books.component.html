@@ -13,6 +13,7 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Title</th>
+        <th scope="col">Image</th>
         <th scope="col">Author</th>
         <th scope="col">ISBN</th>
         <th scope="col">Action</th>
@@ -23,6 +24,7 @@
         <tr>
           <th scope="row">{{i}}</th>
           <td>{{book.Title}}</td>
+          <td><img [src]="book.Image" [width]="60" [height]="120"></td>
           <td>{{book.Author}}</td>
           <td>{{book.ISBN}}</td>
           <td><button type="button" class="btn btn-danger" (click)="deleteBook(book.ISBN)">Delete</button>

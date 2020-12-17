@@ -17,7 +17,8 @@ export class BmsAddBookComponent implements OnInit {
     this.bookForm = this.formBuilder.group({
       title: "",
       author: "",
-      isbn: 0
+      isbn: 0,
+      bookImage: ""
     })
   }
 
@@ -25,10 +26,24 @@ export class BmsAddBookComponent implements OnInit {
   }
 
   onSubmit(book) {
-    this.bookForm.reset();
     console.warn("Book Data:",book);
     this.bmsService.addBook(book);
     this.bookAdded.next(true);
+    this.bookForm.reset();
+  }
+
+  onFileSelected(event){
+    let me = this;
+    let file = event.target.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      me.bookForm.patchValue({
+        bookImage: reader.result
+      })
+    };
+    reader.onerror = (err) => {console.error(err);
+    }
   }
 
   goBack() {

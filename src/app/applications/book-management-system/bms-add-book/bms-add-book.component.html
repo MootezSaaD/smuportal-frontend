@@ -32,6 +32,10 @@
           <label for="bookISBN">ISBN</label>
           <input type="text" class="form-control" id="bookISBN" placeholder="ISBN" formControlName="isbn">
         </div>
+        <div class="form-group">
+          <label for="bookImg">Image</label>
+          <input type="file" class="form-control" id="bookImg" (change)="onFileSelected($event)">
+        </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
       <div class="btn-group mt-1" role="group" aria-label="Basic example">
